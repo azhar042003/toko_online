@@ -28,7 +28,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="cekprofil.php" class="btn btn-default btn-flat" type="submit">Profile</a>
+                  <a href="<?php ('profile/cekprofil') ?>">Profile</a>
                 </div>
                 <div class="pull-right">
                   <?php if($this->session->userdata('username')) { ?>

@@ -12,10 +12,10 @@
   		<h5 class="card-header">Profile</h5>
   		<div class="card-body">
 
-		 <?php foreach($barang as $brg): ?>
+		 <?php foreach ?>
    		 <div class="row">
    		 	<div class="col-md-4">
-   		 			<img src="<?php echo base_url().'/uploads/'.$brg->gambar ?>" class="card-img-top">
+   		 			<img src="<?php echo base_url('assets/img/gambar012.jpg') ?>" class="card-img-top">
    		 	</div>
    		 	<div class="col-md-8">
             <table class="table">
