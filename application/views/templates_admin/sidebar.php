@@ -59,17 +59,37 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
+          <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <svg class="bi bi-person-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                 <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                
+              <li>
+                <?php echo $this->session->userdata('username') ?>
+              </li>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-right">
+                  <?php if($this->session->userdata('username')) { ?>
+                    <li class="ml-3"><?php echo anchor('auth/logout','Logout') ?></li>
+                  <?php } else { ?>
+                    <li><?php echo anchor('auth/login','Login'); ?></li>
+
+                  <?php } ?>
+
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -101,9 +121,6 @@
             <ul class="na navbar-nav navbar-right">
                 <?php if($this->session->userdata('username')) { ?>
                   <li><div>Selamat Datang <?php echo $this->session->userdata('username') ?></div></li>
-                  <li class="ml-2"><?php echo anchor('auth/logout','Logout') ?></li>
-                <?php } else { ?>
-                  <li><?php echo anchor('auth/login','Login'); ?></li>
 
                 <?php } ?>
                 
