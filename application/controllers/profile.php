@@ -8,10 +8,5 @@ class Profile extends CI_Contorller{
 		$this->load->view('cekprofil');
 		$this->load->view('templates/footer');
 	}
-	public function keluar()
-	{
-		$this->session->sess_destroy();
-		redirect('welcome/profile);
-	}
 
 }
