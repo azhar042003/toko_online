@@ -4,7 +4,13 @@
 
   }
 </style>
+<?php
+if( isset($_POST["cari"]) ) {
+    $nama_brg = cari($_POST["keyword"]);
+}
 
+
+?>
  <div class="container-fluid">
 
     
@@ -32,7 +38,7 @@
                 </div>
                 <div class="pull-right">
                   <?php if($this->session->userdata('username')) { ?>
-                    <li class="ml-3"><?php echo anchor('auth/logout','Logout') ?></li>
+                    <li><?php echo anchor('auth/logout','Logout') ?></li>
                   <?php } else { ?>
                     <li><?php echo anchor('auth/login','Login'); ?></li>
 
@@ -45,12 +51,10 @@
         </ul>
       <div class="row">
         <div class="col-md-4">
-          <form action="<?= base_url(''); ?>" method="post">
+          <form action="" method="post">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Search keyword.." autocomplete="off">
-            <div class="input-group-append">
-              <input class="btn btn-primary" type="submit" name="submit">
-            </div>
+              <input type="text" class="form-control" autofocus placeholder="Search keyword.." autocomplete="off" >
+              <button type="submit" name="cari">Cari</button>
           </div>
         </form>
         </div>  
