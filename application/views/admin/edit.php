@@ -12,26 +12,8 @@
 
 			<div class="for-group">
 				<label>Alamat</label>
-				<input type="hidden" name="id_brg" autocomplete="off" class="form-control"
-				value="<?php echo $inv->id_brg ?>">	
-			</div>
-
-			<div class="for-group">
-				<label>Kategori</label>
-				<input type="text" name="kategori" autocomplete="off" class="form-control"
-				value="<?php echo $inv->kategori ?>">	
-			</div>
-
-			<div class="for-group">
-				<label>Harga</label>
-				<input type="text" name="harga" autocomplete="off" class="form-control"
-				value="<?php echo $brg->harga ?>">	
-			</div>
-
-			<div class="for-group">
-				<label>Stok</label>
-				<input type="text" name="stock" autocomplete="off" class="form-control"
-				value="<?php echo $brg->stock ?>">	
+				<input type="hidden" name="alamat" autocomplete="off" class="form-control"
+				value="<?php echo $inv->alamat ?>">	
 			</div>
 
 			<button type="submit" class="btn btn-primary btn-sm mt-3">Simpan</button>
