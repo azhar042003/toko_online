@@ -7,13 +7,13 @@
 			<div class="for-group">
 				<label>Nama Pemesanan</label>
 				<input type="text" name="nama" autocomplete="off" class="form-control"
-				value="<?php echo $inv->nama ?>">	
+				value="<?php echo $invoice->nama ?>">	
 			</div>
 
 			<div class="for-group">
 				<label>Alamat</label>
-				<input type="hidden" name="alamat" autocomplete="off" class="form-control"
-				value="<?php echo $inv->alamat ?>">	
+				<input type="text" name="alamat" autocomplete="off" class="form-control"
+				value="<?php echo $invoice->alamat ?>">	
 			</div>
 
 			<button type="submit" class="btn btn-primary btn-sm mt-3">Simpan</button>

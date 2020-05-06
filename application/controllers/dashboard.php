@@ -77,5 +77,12 @@ class Dashboard extends CI_Controller{
 			$this->load->view('detail_barang', $data);
 			$this->load->view('templates/footer');
 	}
+	public function cekprofil()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('cekprofil', $data);
+		$this->load->view('templates/footer');
+	}
 
 }
