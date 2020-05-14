@@ -13,7 +13,6 @@
   		<div class="card-body">
 
 		 <?php foreach ($nama as $nma) ?>
-      <form method="post" action="<?php echo base_url().'views/profil' ?>">
    		 <div class="row">
    		 	<div class="col-md-4">
    		 			<img src="<?php echo base_url('assets/img/gambar012.jpg') ?>" class="card-img-top">
@@ -36,7 +35,6 @@
               </tr>
             </table> 
         </div>
-      </form>
 
    		 </div>
    		<?php endforeach; ?>
