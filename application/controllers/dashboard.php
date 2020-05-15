@@ -84,12 +84,16 @@ class Dashboard extends CI_Controller{
 		$this->load->view('cekprofil', $data);
 		$this->load->view('templates/footer');
 	}
-	public function cari()
-	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view('cari', $data);
-		$this->load->view('templates/footer');
-	}
+	public function cari($id_brg)
+ 	 {
+ 	 	$result = $this->db->where('id_brg', $id)
+ 					       ->limit(1)
+ 					       ->get('tb_barang');
+ 		if($result->num_rows() > 0){
+ 			return $result->row();
+ 		}else{
+ 			return array();
+ 		}
+ 	 }
 
 }

@@ -13,6 +13,7 @@
   		<div class="card-body">
 
 		 <?php foreach($barang as $brg): ?>
+      <form method="post" action="<?php echo base_url().'dashboard/detail_barang' ?>">
    		 <div class="row">
    		 	<div class="col-md-4">
    		 			<img src="<?php echo base_url().'/uploads/'.$brg->gambar ?>" class="card-img-top">
@@ -45,6 +46,7 @@
               </tr>
             </table> 
         </div>
+      </form>
 
    		 </div>
    		<?php endforeach; ?>

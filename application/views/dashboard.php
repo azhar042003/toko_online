@@ -5,10 +5,9 @@
   }
 </style>
 <?php
-if( isset($_POST["cari"]) ) {
+if( isset($_POST["pencarian"]) ) {
     $nama_brg = cari($_POST["keyword"]);
 }
-
 
 ?>
  <div class="container-fluid">
