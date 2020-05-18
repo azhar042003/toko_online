@@ -20,25 +20,29 @@
    		 	</div>
    		 	<div class="col-md-8">
             <table class="table">
-              <tr>
-                <td>Nama Produk</td>
-                <td><strong><?php echo $brg->nama_brg ?></strong></td>
-              </tr>
+              <div class="for-group">
+                 <label>Nama Barang</label>
+                 <input type="text" name="nama" autocomplete="off" class="form-control"
+                 value="<?php echo $brg->nama_brg ?>"> 
+              </div>
 
-              <tr>
-                <td>Keterangan</td>
-                <td><strong><?php echo $brg->keterangan ?></strong></td>
-              </tr>
+              <div class="for-group">
+                 <label>Keterangan</label>
+                 <input type="text" name="nama" autocomplete="off" class="form-control"
+                 value="<?php echo $brg->keterangan ?>"> 
+              </div>
 
-              <tr>
-                <td>Kategori</td>
-                <td><strong><?php echo $brg->kategori ?></strong></td>
-              </tr>
+              <div class="for-group">
+                 <label>Kategori</label>
+                 <input type="text" name="nama" autocomplete="off" class="form-control"
+                 value="<?php echo $brg->kategori ?>"> 
+              </div>
 
-              <tr>
-                <td>Stok</td>
-                <td><strong><?php echo $brg->stock ?></strong></td>
-              </tr>
+              <div class="for-group">
+                 <label>stock</label>
+                 <input type="text" name="nama" autocomplete="off" class="form-control"
+                 value="<?php echo $brg->stock ?>"> 
+              </div>
 
               <tr>
                 <td>Harga</td>
