@@ -13,36 +13,32 @@
   		<div class="card-body">
 
 		 <?php foreach($barang as $brg): ?>
-      <form method="post" action="<?php echo base_url().'dashboard/detail_barang' ?>">
+      <form method="post" action="<?php echo base_url().'Welcome/detail_barang' ?>">
    		 <div class="row">
    		 	<div class="col-md-4">
    		 			<img src="<?php echo base_url().'/uploads/'.$brg->gambar ?>" class="card-img-top">
    		 	</div>
    		 	<div class="col-md-8">
             <table class="table">
-              <div class="for-group">
-                 <label>Nama Barang</label>
-                 <input type="text" name="nama" autocomplete="off" class="form-control"
-                 value="<?php echo $brg->nama_brg ?>"> 
-              </div>
+              <tr>
+               <td>Nama Produk</td>
+               <td><strong><?php echo $brg->nama_brg ?></strong></td>
+              </tr>
 
-              <div class="for-group">
-                 <label>Keterangan</label>
-                 <input type="text" name="nama" autocomplete="off" class="form-control"
-                 value="<?php echo $brg->keterangan ?>"> 
-              </div>
+               <tr>
+                <td>Keterangan</td>
+                <td><strong><?php echo $brg->keterangan ?></strong></td>
+               </tr>
 
-              <div class="for-group">
-                 <label>Kategori</label>
-                 <input type="text" name="nama" autocomplete="off" class="form-control"
-                 value="<?php echo $brg->kategori ?>"> 
-              </div>
+               <tr>
+                <td>Kategori</td>
+                <td><strong><?php echo $brg->kategori ?></strong></td>
+               </tr>
 
-              <div class="for-group">
-                 <label>stock</label>
-                 <input type="text" name="nama" autocomplete="off" class="form-control"
-                 value="<?php echo $brg->stock ?>"> 
-              </div>
+               <tr>
+                <td>Stok</td>
+                <td><strong><?php echo $brg->stock ?></strong></td>
+               </tr>
 
               <tr>
                 <td>Harga</td>
