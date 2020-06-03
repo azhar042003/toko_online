@@ -1,55 +1,46 @@
-<style type="text/css">
-  .container-fluid {
-    padding-bottom: 300px;
-  }
+ <div class="container-fluid">
 
-</style>
-
-
-<div class="container-fluid">
-	
-	<div class="card">
-  		<h5 class="card-header">Hasil Pencarian</h5>
-  		<div class="card-body">
-
-		 <?php foreach($barang as $brg): ?>
-      <form method="post" action="<?php echo base_url().'Welcome/detail_barang' ?>">
-   		 <div class="row">
-   		 	<div class="col-md-4">
-   		 			<img src="<?php echo base_url().'/uploads/'.$brg->gambar ?>" class="card-img-top">
-   		 	</div>
-   		 	<div class="col-md-8">
-            <table class="table">
-              <tr>
-               <td>Nama Produk</td>
-               <td><strong><?php echo $brg->nama_brg ?></strong></td>
-              </tr>
-
-               <tr>
-                <td>Keterangan</td>
-                <td><strong><?php echo $brg->keterangan ?></strong></td>
-               </tr>
-
-               <tr>
-                <td>Kategori</td>
-                <td><strong><?php echo $brg->kategori ?></strong></td>
-               </tr>
-
-               <tr>
-                <td>Stok</td>
-                <td><strong><?php echo $brg->stock ?></strong></td>
-               </tr>
-
-              <tr>
-                <td>Harga</td>
-                <td><strong><div class="btn btn-sm btn-success">Rp. <?php echo number_format($brg->harga,0,',','. ') ?></div></strong></td>
-              </tr>
-            </table> 
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="<?php echo base_url('assets/img/slider1.jpg') ?>" class="d-block w-100" alt="...">
         </div>
-      </form>
+        <div class="carousel-item">
+          <img src="<?php echo base_url('assets/img/slider2.jpg') ?>" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
-   		 </div>
-   		<?php endforeach; ?>
-		</div>
-	</div>
-</div>
+
+    <div class="row text-center mt-4">
+
+        <?php foreach ($nama_brg as $brg) : ?>
+
+            <div class="card ml-3 mb-3" style="width: 16rem;">
+              <img src="<?php echo base_url().'/uploads/'.$brg->gambar ?>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-tittle mb-1"><?php echo $brg->nama_brg ?></h5>
+                <small><?php echo $brg->keterangan ?></small><br>
+                <span class="badge badge-pill badge-success mb-3">Rp. <?php echo number_format($brg->harga, 0,',','.')  ?></span>
+                <?php echo anchor('dashboard/tambah_ke_keranjang/'.$brg->id_brg,'<div class="btn btn-sm btn-primary">Tambah Ke Keranjang</div>') ?>
+                <?php echo anchor('dashboard/detail/'.$brg->id_brg,'<div class="btn btn-sm btn-success">Detail</div>') ?>
+                
+              </div>
+            </div>
+
+
+        <?php endforeach; ?>
+    </div>
+  </div>
