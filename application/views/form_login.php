@@ -32,6 +32,9 @@
                   </form>
                   <hr>
                   <div class="text-center">
+                    <a class="small" href="<?php echo base_url('change/index'); ?>">Change Password</a>
+                  </div>
+                  <div class="text-center">
                     <a class="small" href="<?php echo base_url('registrasi/index'); ?>">Tidak Ada Akun? Klik untuk Daftar!</a>
                   </div>
                 </div>
