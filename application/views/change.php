@@ -1,45 +1,37 @@
-<body class="bg-gradient-primary">
+<div>
+  
 
-  <div class="container">
 
-    <div class="card o-hidden border-0 shadow-lg col-lg-6 my-5">
-      <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-        <div class="row">
-          <div class="col-lg">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Change password</h1>
-              </div>
-              <form method="post" action="<?php echo base_url('change/index') ?>" class="user">
+  <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nama Anda" name="nama"autocomplete="off">
-                 <?php echo form_error('nama', '<div class="text-danger small ml-2">', '</div>') ?>
-                </div>
-                
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Username Anda" name="username"autocomplete="off">
-                  <?php echo form_error('username', '<div class="text-danger small ml-2">', '</div>') ?>
-                </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password_1"autocomplete="off">
-                    <?php echo form_error('password_1', '<div class="text-danger small ml-2">', '</div>') ?>
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Ulangi Password" name="password_2"autocomplete="off">
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block">Done</button>
-                
-              </form>
-              <hr>
-            </div>
+
+  <div class="row">
+      <div class="col-lg-6">
+        
+        <form action="<?= base_url('user/changepassword'); ?>" method="post">
+          <div class="form-group">
+            <label for="current_password">Current Password</label>
+            <input type="password" class="form-control" id="current_password" name="current_password">
           </div>
-        </div>
-      </div>
-    </div>
+          <div class="form-group">
+            <label for="new_password1">New Password</label>
+            <input type="password" class="form-control" id="new_password1" name="new_password1">
+          </div>
+          <div class="form-group">
+            <label for="new_password2">Repeat Password</label>
+            <input type="password" class="form-control" id="new_password2" name="new_password2">
+          </div>
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary">Change password</button>
+          </div>
+        </form>
 
+      </div>
   </div>
 
+
+
+
+
+
+</div>
