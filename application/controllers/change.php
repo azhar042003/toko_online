@@ -14,8 +14,29 @@ class Change extends CI_Controller{
 		if($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/change', $data);
+			$this->load->view('auth/change', $data);
 			$this->load->view('templates/footer', $data);
+		} else {
+			$current_password = $this->input->post('current_password');
+			$new_password = $this->input->post('new_password1');
+			if(!password_verify($current_password, $data['username']['password'])) {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong current password!</div>');
+				redirect('auth/change');
+			} else {
+				if($current_password == $new_password) {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">New password cannot be the same as current password!</div>');
+					redirect('auth/change');
+				} else {
+					$password_hash = password_hash($new_password, pasword_default);
+
+					$this->db->set('password', $password_hash);
+					$this->db->where('username', $this->session->userdata('username'));
+					$this->db->update('user');
+
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password change!</div>');
+					redirect('auth/change');
+				}
+			}
 		}
 		
 	}
