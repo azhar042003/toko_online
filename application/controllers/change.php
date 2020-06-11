@@ -3,19 +3,22 @@
 class Change extends CI_Controller{
 	public function index()
 	{
-		$data['title'] = 'Change Password';
-		$data['tb_user'] = $this->db->get_where('username', ['username' =>$this->session->userdata('nama')])->row_array();
 
-		$this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
-		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|matches[new_password2]');
-		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|matches[new_password1]');
+		$this->form_validation->set_rules('current_password', 'Current Password', 'required', [
+			'required'	=> 'Current password harus diisi!'
+		]);
+		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|matches[new_password2]', [
+			'required'	=> 'New password harus diisi!'
+		]);
+		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|matches[new_password1]', [
+			'required'	=> 'New password harus diisi!'
+		]);
 
 
 		if($this->form_validation->run() == false) {
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/change', $data);
-			$this->load->view('templates/footer', $data);
+			$this->load->view('templates/header');
+			$this->load->view('change');
+			$this->load->view('templates/footer');
 		} else {
 			$current_password = $this->input->post('current_password');
 			$new_password = $this->input->post('new_password1');
@@ -34,7 +37,9 @@ class Change extends CI_Controller{
 					$this->db->update('user');
 
 					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password change!</div>');
-					redirect('auth/change');
+					redirect('auth/login');
+					$this->db->insert('tb_user',$data);
+					redirect('auth/login');
 				}
 			}
 		}
