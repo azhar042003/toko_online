@@ -81,7 +81,7 @@ class Dashboard extends CI_Controller{
 	{
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
-		$this->load->view('cekprofil', $data);
+		$this->load->view('cekprofil');
 		$this->load->view('templates/footer');
 	}
 	public function cari($nama_brg)

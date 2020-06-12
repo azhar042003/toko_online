@@ -33,7 +33,7 @@ if( isset($_POST["pencarian"]) ) {
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php ('profile/cekprofil') ?>">Profile</a>
+                  <a href="<?php ('cekprofil/index') ?>">Profile</a>
                 </div>
                 <div class="pull-right">
                   <?php if($this->session->userdata('username')) { ?>
