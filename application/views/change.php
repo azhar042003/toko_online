@@ -27,6 +27,9 @@
           <div class="form-group">
               <button type="submit" class="btn btn-primary">Change password</button>
           </div>
+          <div class="text-center">
+            <a class="small" href="<?php echo base_url('change/index'); ?>">Change Username? Klik</a>
+          </div>
         </form>
 
       </div>

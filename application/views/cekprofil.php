@@ -7,12 +7,12 @@
 
 
 <div class="container-fluid">
-	
+	<form method="post" action="<?php echo base_url('cekprofil/index') ?>" class="user">
 	<div class="card">
   		<h5 class="card-header">Profile</h5>
   		<div class="card-body">
 
-		 <?php foreach ($nama as $nma) ?>
+		 <?php foreach ($nama as $nama) ?>
    		 <div class="row">
    		 	<div class="col-md-4">
    		 			<img src="<?php echo base_url('assets/img/gambar012.jpg') ?>" class="card-img-top">
@@ -38,6 +38,7 @@
 
    		 </div>
    		<?php endforeach; ?>
+      </form>
 		</div>
 	</div>
 </div>
