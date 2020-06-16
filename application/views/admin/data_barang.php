@@ -1,6 +1,17 @@
 <div class="container-fluid">
 	<button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_barang"><i class="fas fa-plus fa-sm"></i> Tambah Barang</button>
 
+<div class="dropdown inline">
+  <button class="btn btn-warning mb-3 dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+   <i class="fa fa-download"></i> Export
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="<?php echo base_url('export/pdf') ?>">PDF</a></li>
+    <li><a href="<?php echo base_url('export/excel') ?>">EXCEL</a></li>
+  </ul>
+</div>
+
 	<table class="table table-bordered">
 		<tr>
 			<th>NO</th>
