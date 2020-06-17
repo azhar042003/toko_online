@@ -2,10 +2,24 @@
 
 class Export extends CI_Controller{
 	public function pdf(){
+		$this->load->library('dompdf_gen')
+
+		$data['tb_brg'] = $this->model_barang->tampil_data('nama_brg')->result();
+
+		$this->load->view('laporan_pdf',$data);
+
+		$paper_size = 'A4';
+		$orientation = 'landscape';
+		$html = $this->output->get_output();
+		$this->dompdf->set_paper($paper_size, $orientation);
+
+		$this->dompdf->load_html($html);
+		$this->dompdf->render();
+		$this->dompdf->stream("laporan_data_barang.pdf", array('Attachment' =>0));
 	}
 
 	public function excel(){
-		$data['tb_brg'] = $this->nama_brg->tampil_data('nama_brg')->result();
+		$data['tb_brg'] = $this->model_barang->tampil_data('nama_brg')->result();
 
 		require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel.php');
 		require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
