@@ -4,7 +4,7 @@ class Export extends CI_Controller{
 	public function pdf(){
 		$this->load->library('dompdf_gen')
 
-		$data['tb_brg'] = $this->model_barang->tampil_data('nama_brg')->result();
+		$data['barang'] = $this->model_barang->tampil_data('tb_barang')->result();
 
 		$this->load->view('laporan_pdf',$data);
 
@@ -19,7 +19,7 @@ class Export extends CI_Controller{
 	}
 
 	public function excel(){
-		$data['tb_brg'] = $this->model_barang->tampil_data('nama_brg')->result();
+		$data['barang'] = $this->model_barang->tampil_data('tb_barang')->result();
 
 		require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel.php');
 		require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
@@ -42,7 +42,7 @@ class Export extends CI_Controller{
 		$baris = 2;
 		$no = 1;
 
-		foreach ($data['tb_brg'] as $brg) {
+		foreach ($data['barang'] as $brg) {
 			$object->getActiveSheet()->setCellValue('A'.$baris, $no++);
 			$object->getActiveSheet()->setCellValue('B'.$baris, $brg->nama_brg);
 			$object->getActiveSheet()->setCellValue('C'.$baris, $brg->keterangan);
