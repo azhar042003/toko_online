@@ -1,10 +1,13 @@
 <?php 
-
+require('./excel/vendor/autoload.php');
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Export extends CI_Controller{
 	public function pdf(){
-		$this->load->library('dompdf_gen')
+		$this->load->library('dompdf_gen');
 
-		$data['barang'] = $this->model_barang->tampil_data('tb_barang')->result();
+		$data['tb_barang'] = $this->model_barang->tampil_data('tb_barang')->result();
 
 		$this->load->view('laporan_pdf',$data);
 
@@ -19,51 +22,55 @@ class Export extends CI_Controller{
 	}
 
 	public function excel(){
-		$data['barang'] = $this->model_barang->tampil_data('tb_barang')->result();
+		$data['tb_barang'] = $this->model_barang->tampil_data('tb_barang')->result();
 
-		require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel.php');
-		require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
+		$sheet = new Spreadsheet();
+        $sheet->getProperties()->setCreator('SMKN 24 Jakarta')
+        ->setLastModifiedBy('Toko_Az')
+        ->setTitle('Data Barang')
+        ->setSubject('Data Barang')
+        ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+        ->setKeywords('office 2007 openxml php')
+        ->setCategory('Barang');
 
-		$object = new PHPExcel();
+        $object = $sheet->getActiveSheet();
+        $object->setCellValue('A1', 'NO');
+		$object->setCellValue('B1', 'NAMA BARANG');
+		$object->setCellValue('C1', 'KETERANGAN');
+		$object->setCellValue('D1', 'KATEGORI');
+		$object->setCellValue('E1', 'HARGA');
+		$object->setCellValue('F1', 'STOK');
 
-		$object->getProperties()->setCreator("Toko_Az");
-		$object->getProperties()->setLastModifiedBy("Toko_Az");
-		$object->getProperties()->setTitle("Data Barang");
+        $baris=2;
+        $no=1;
+        foreach ($data['tb_barang'] as $brg) {
+            $object = $sheet->getActiveSheet();
+            $object->setCellValue('A'.$baris, $no++);
+			$object->setCellValue('B'.$baris, $brg->nama_brg);
+			$object->setCellValue('C'.$baris, $brg->keterangan);
+			$object->setCellValue('D'.$baris, $brg->kategori);
+			$object->setCellValue('E'.$baris, $brg->harga);
+			$object->setCellValue('F'.$baris, $brg->stock);
+            $baris++;
+    
+        }
 
-		$object->setActiveSheetIndex(0);
+        $filename="Data_Barang".'.xlsx';
+        $sheet->getActiveSheet()->setTitle('Data Barang');
+        $sheet->setActiveSheetIndex(0);
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$filename.'"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
 
-		$object->setActiveSheetIndex()->setCellValue('A1', 'NO');
-		$object->setActiveSheetIndex()->setCellValue('B1', 'NAMA BARANG');
-		$object->setActiveSheetIndex()->setCellValue('C1', 'KETERANGAN');
-		$object->setActiveSheetIndex()->setCellValue('D1', 'KATEGORI');
-		$object->setActiveSheetIndex()->setCellValue('E1', 'HARGA');
-		$object->setActiveSheetIndex()->setCellValue('F1', 'STOK');
+        header('Expires: 0');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); 
+        header('Cache-Control: cache, must-revalidate'); 
+        header('Pragma: public'); 
 
-		$baris = 2;
-		$no = 1;
+        $writer = IOFactory::createWriter($sheet,'Xlsx');
+        $writer->save('php://output');
 
-		foreach ($data['barang'] as $brg) {
-			$object->getActiveSheet()->setCellValue('A'.$baris, $no++);
-			$object->getActiveSheet()->setCellValue('B'.$baris, $brg->nama_brg);
-			$object->getActiveSheet()->setCellValue('C'.$baris, $brg->keterangan);
-			$object->getActiveSheet()->setCellValue('D'.$baris, $brg->kategori);
-			$object->getActiveSheet()->setCellValue('E'.$baris, $brg->harga);
-			$object->getActiveSheet()->setCellValue('F'.$baris, $brg->stock);
-
-			$baris++;
-		}
-
-		$filename="Data_Barang".'.xlsx';
-
-		$object->getActiveSheet()->setTitle("Data Barang");
-
-		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheethtml.sheet');
-		header('Content-Disposition: attachment;filename="'.$filename.'"');
-		header('Cache-Control: max-age=0');
-
-		$writer=PHPExcel_IOFactory::createwriter($object, 'Excel2007');
-		$writer->save('php://output');
-
-		exit;
+        exit;
 	}
 }

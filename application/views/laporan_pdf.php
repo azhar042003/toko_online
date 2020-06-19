@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html><head>
 	<title></title>
+	<style>
+    body {
+        font-family: sans-serif;
+    }
+    table, td, th {  
+        border: 1px solid black;
+        text-align: left;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 5px;
+    }
+    th, td {
+        padding: 5px;
+    }
+    h3 {
+        text-align: center;
+    }
+</style>
 </head><body>
 
 	<table>
 		<tr>
 			<th>No</th>
-			<th>Nma Barang</th>
+			<th>Nama Barang</th>
 			<th>Keterangan</th>
 			<th>Kategori</th>
 			<th>Harga</th>
@@ -15,7 +35,7 @@
 
 		<?php
 		$no= 1;
-		foreach ($barang as $brg); ?>
+		foreach ($tb_barang as $brg) : ?>
 
 		<tr>
 			<td><?php echo $no++?></td>
