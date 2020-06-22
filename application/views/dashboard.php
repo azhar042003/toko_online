@@ -32,9 +32,6 @@ if( isset($_POST["pencarian"]) ) {
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?php ('cekprofil/index') ?>">Profile</a>
-                </div>
                 <div class="pull-right">
                   <?php if($this->session->userdata('username')) { ?>
                     <li><?php echo anchor('auth/logout','Logout') ?></li>
@@ -49,13 +46,11 @@ if( isset($_POST["pencarian"]) ) {
           </li>
         </ul>
       <div class="row">
-        <div class="col-md-4">
-          <form action="" method="post">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" autofocus placeholder="Search keyword.." autocomplete="off" >
-              <button type="submit" name="cari">Cari</button>
-          </div>
-        </form>
+        <div class="col-md-4 mb-3">
+          <?php echo form_open('dashboard/search') ?>
+          <input type="text" name="keyword" class="form-control" placeholder="Search" autocomplete="off">
+          <button type="submit" class="btn btn-success">Cari</button>
+          <?php echo form_close() ?>
         </div>  
       </div>
       </div>

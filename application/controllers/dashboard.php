@@ -77,23 +77,15 @@ class Dashboard extends CI_Controller{
 			$this->load->view('detail_barang', $data);
 			$this->load->view('templates/footer');
 	}
-	public function profil($username)
-	{
+	
+	public function search(){
+		$keyword = $this->input->post('keyword');
+		$data['barang']=$this->model_barang->get_keyword($keyword);
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
-		$this->load->view('cekprofil');
+		$this->load->view('dashboard', $data);
 		$this->load->view('templates/footer');
 	}
-	public function cari($nama_brg)
- 	 {
- 	 	$result = $this->db->where('nama_brg', $brg)
- 					       ->limit(1)
- 					       ->get('tb_barang');
- 		if($result->num_rows() > 0){
- 			return $result->row();
- 		}else{
- 			return array();
- 		}
- 	 }
+	
 
 }
