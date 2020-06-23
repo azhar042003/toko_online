@@ -11,6 +11,7 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Ganti Password</h1>
             </div>
+            <?= $this->session->flashdata('message'); ?>
         <form method="post" action="<?php echo base_url('change/index') ?>" class="user">
           <div class="form-group">
             <label for="current_password">Current Password</label>
@@ -26,15 +27,10 @@
           </div>
           <div class="form-group">
               <button type="submit" class="btn btn-primary">Change password</button>
+              <a href="<?php echo base_url('auth/login/index') ?>"><div class="btn btn-sm btn-primary">Kembali</div></a>
           </div>
         </form>
 
       </div>
   </div>
-
-
-
-
-
-
 </div>

@@ -19,7 +19,6 @@
 			<td><?php echo $inv->tgl_pesan ?></td>
 			<td><?php echo $inv->batas_bayar ?></td>
 			<td><?php echo anchor('admin/invoice/detail/'.$inv->id,'<div class="btn btn-sm btn-primary">Detail</div>') ?></td>
-			<td><?php echo anchor('admin/invoice/edit/' .$inv->id, '<div class="btn btn-sm btn-success">Edit</div>') ?></td>
 		</tr>
 
 	<?php endforeach; ?>

@@ -42,5 +42,6 @@
 	<div align="right">
 		<a href="<?php echo base_url('dashboard/hapus_keranjang') ?>"><div class="btn btn-sm btn-danger">Hapus Keranjang</div></a>
 		<a href="<?php echo base_url('dashboard/pembayaran') ?>"><div class="btn btn-sm btn-success">Pembayaran</div></a>
+		<a href="<?php echo base_url('welcome/index') ?>"><div class="btn btn-sm btn-primary">Kembali</div></a>
 	</div>
 </div>

@@ -46,6 +46,7 @@
             </table> 
 
             <?php echo anchor('dashboard/tambah_ke_keranjang/'.$brg->id_brg,'<div class="btn btn-sm btn-primary">Tambah Ke Keranjang</div>') ?>
+            <a href="<?php echo base_url('welcome/index') ?>"><div class="btn btn-sm btn-primary">Kembali</div></a>
         </div>
 
    		 </div>
